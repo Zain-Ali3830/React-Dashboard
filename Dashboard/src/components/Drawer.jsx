@@ -200,8 +200,8 @@ export default function MiniDrawer() {
           ))}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', <Link to={'/products'}>Products</Link> ].map((text, index) => (
+        <Link to={'/products'}><List>
+          {[ 'Products' ].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={[
@@ -250,7 +250,7 @@ export default function MiniDrawer() {
               </ListItemButton>
             </ListItem>
           ))}
-        </List>
+        </List></Link>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />

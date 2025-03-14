@@ -25,10 +25,10 @@ return(
         {error&& <h2>{error.message}</h2>}
        <div style={{display:'flex', flexDirection:'column', gap:'30px'}}>
        {data && data.map((item)=>(
-             <div style={{height:'300px', width:'1200px', marginLeft:'80px', borderRadius:'10px', display:'flex', justifyContent:'space-evenly', alignItems:'center', gap:'50px', border:'1px solid gray', padding:'10px'}} key={item.id}>
-                <img style={{height:'100px', width:'100px'}} src={item.image} alt="" /> <br />
-                <h2>Title :{item.title}</h2>
-                <h2>Description :{item.description}</h2>
+             <div style={{height:'300px', width:'1200px', marginLeft:'80px', borderRadius:'10px', display:'flex', justifyContent:'space-evenly', alignItems:'center', gap:'50px', border:'0.5px solid gray', boxShadow:'10px 10px 15px gray', paddingLeft:'35px'}} key={item.id}>
+                <div style={{ boxShadow:'5px 5px 195px gray'}}><img style={{height:'100px', width:'100px'}} src={item.image} alt="" /> <br /></div>
+                <div><h2>Title:</h2><p>{item.title}</p></div>
+                <div><h2>Description:</h2><p>{item.description}</p></div>
            </div>
         ))}
        </div>
