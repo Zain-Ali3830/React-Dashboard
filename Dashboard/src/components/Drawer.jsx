@@ -22,8 +22,9 @@ import MarkOptimization from './Graph';
 import BasicBars from './Charts';
 import PieArcLabel from './Piechart';
 import SelectActionCard from './Appbar';
-import Fetch from '../pages/Products';
 import { Link } from 'react-router-dom';
+import Modal from './Modal';
+import { useState } from 'react';
 
 const drawerWidth = 240;
 
@@ -105,7 +106,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export default function MiniDrawer({showContent=true}) {
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -149,7 +151,7 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Inbox', 'Starred', 'Send email',<Link to={'/catagories'}>Catagories</Link>].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={[
@@ -254,14 +256,33 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
+        {showContent && (
        <div style={{display:"flex" , flexDirection:"column" , justifyContent:'space-evenly', alignItems:'center' , gap:'50px'}}>
        <div style={{display:"flex", justifyContent:"space-around", alignItems:"center", width:"100vw"}} ><div><SelectActionCard /></div><div><MarkOptimization /></div></div>
         <div style={{display:"flex", justifyContent:"space-around", alignItems:"center", width:"100vw"}}>
         <div style={{marginLeft:"30px"}}> <BasicBars /></div>
         <div style={{marginRight:"250px"}}><PieArcLabel /></div>
+
         </div>
        </div>
+        )}
       </Box>
     </Box>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
