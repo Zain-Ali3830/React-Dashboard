@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 
 function Modal({ closeModal, addProduct }) {
   const [data, setData] = useState({ title: "", desc: "", category: "" });
-  
+
   function submit() {
     if (data.title.trim() === "" || data.desc.trim() === "" || data.category === "") {
       alert("Please fill out all fields!");
       return;
     }
-    
-    console.log("Data Submit", data)
     addProduct(data);
     setData({ title: "", desc: "", category: "" });
     closeModal();
@@ -21,10 +19,7 @@ function Modal({ closeModal, addProduct }) {
       ...prevProduct,
       [name]: value,
     }));
-
   }
-
-  //console.log("From Data:", data);
 
   // Fade-in animation on open
   useEffect(() => {
@@ -67,7 +62,7 @@ function Modal({ closeModal, addProduct }) {
         <select name="category" value={data.category} onChange={handleChange} style={styles.select}>
           <option value="" disabled>Select a category</option>
           {categories.map((item, index) => (
-            <option key={index} value={item} style={styles.option} >
+            <option key={index} value={item} style={styles.option}>
               {item}
             </option>
           ))}

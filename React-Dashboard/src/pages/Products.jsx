@@ -5,7 +5,6 @@ import { useState } from "react";
 const Fetch = () => {
     const [modal, setModal] = useState(false);
     const [datas, setDatas] = useState([]);
-    const[localData,setLocalData]=useState([]);
     const [editIndex, setEditIndex] = useState(null);
     const [editData, setEditData] = useState({ title: "", desc: "" });
 
@@ -44,13 +43,6 @@ const Fetch = () => {
         setDatas(updatedData);
         setEditIndex(null);
     }
-    function handleCategory(){
-        const local=localStorage.getItem('Keys')
-        setLocalData(local)
-    }
-
-    console.log(datas);
-    
 
     return (
         <div style={styles.container}>
@@ -89,10 +81,7 @@ const Fetch = () => {
                                         <h2>Description:</h2>
                                         <p>{item.desc}</p>
                                     </div>
-                                    <div>
-                                        <h2>Category</h2>
-                                        <p>{item.category}</p>
-                                    </div>
+                                    <div><h2>Category</h2></div>
                                     <div>
                                         <button onClick={() => deleteProduct(index)} style={styles.deleteButton}>Delete</button>
                                     </div>
