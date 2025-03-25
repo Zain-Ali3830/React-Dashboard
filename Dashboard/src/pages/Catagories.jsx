@@ -1,11 +1,10 @@
-
 import MiniDrawer from "../components/Drawer";
 import React, { useEffect, useState } from "react";
 
 function Categories() {
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState(
-    JSON.parse(localStorage.getItem("keys")) || []
+    JSON.parse(localStorage.getItem("Keys")) || []
   );
 
   useEffect(() => {

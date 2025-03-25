@@ -1,14 +1,13 @@
 import MiniDrawer from "../components/Drawer";
 import Modal from "../components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Fetch = () => {
     const [modal, setModal] = useState(false);
-    const [datas, setDatas] = useState([]);
+    const [datas, setDatas] = useState(()=>JSON.parse(localStorage.getItem('Data'))||[]);
     const[localData,setLocalData]=useState([]);
     const [editIndex, setEditIndex] = useState(null);
-    const [editData, setEditData] = useState({ title: "", desc: "" });
-
+    const [editData, setEditData] = useState({ title: "", desc: "" })
     function handleModal(){
               if(modal===true){
                 setModal(false)
@@ -44,6 +43,9 @@ const Fetch = () => {
         setDatas(updatedData);
         setEditIndex(null);
     }
+    useEffect(()=>{
+        localStorage.setItem('Data',JSON.stringify(datas))
+    },[datas])
     function handleCategory(){
         const local=localStorage.getItem('Keys')
         setLocalData(local)
@@ -213,3 +215,10 @@ const styles = {
 };
 
 export default Fetch;
+
+
+
+
+
+
+

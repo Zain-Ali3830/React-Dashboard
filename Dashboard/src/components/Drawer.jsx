@@ -23,6 +23,7 @@ import BasicBars from './Charts';
 import PieArcLabel from './Piechart';
 import SelectActionCard from './Appbar';
 import { Link } from 'react-router-dom';
+// import "./index.css"
 import Modal from './Modal';
 import { useState } from 'react';
 
@@ -149,9 +150,11 @@ export default function MiniDrawer({showContent=true}) {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+
+
+        <Link to={'/'}>
         <List>
-          {['Inbox', 'Starred', 'Send email',<Link to={'/catagories'}>Catagories</Link>].map((text, index) => (
+          {['Home'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={[
@@ -201,6 +204,73 @@ export default function MiniDrawer({showContent=true}) {
             </ListItem>
           ))}
         </List>
+        </Link>
+
+
+
+
+
+
+
+
+
+
+
+
+        <Divider />
+        <Link to={'/catagories'}>
+        <List>
+          {['Categories'].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
+                sx={[
+                  {
+                    minHeight: 48,
+                    px: 2.5,
+                  },
+                  open
+                    ? {
+                        justifyContent: 'initial',
+                      }
+                    : {
+                        justifyContent: 'center',
+                      },
+                ]}
+              >
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: 'center',
+                    },
+                    open
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: 'auto',
+                        },
+                  ]}
+                >
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText
+                  primary={text}
+                  sx={[
+                    open
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        </Link>
         <Divider />
         <Link to={'/products'}><List>
           {[ 'Products' ].map((text, index) => (
@@ -256,8 +326,8 @@ export default function MiniDrawer({showContent=true}) {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {showContent && (
-       <div style={{display:"flex" , flexDirection:"column" , justifyContent:'space-evenly', alignItems:'center' , gap:'50px'}}>
+        {showContent && ( 
+       <div id='responsiveContainer' style={{display:"flex" , flexDirection:"column" , justifyContent:'space-evenly', alignItems:'center' , gap:'50px',}}>
        <div style={{display:"flex", justifyContent:"space-around", alignItems:"center", width:"100vw"}} ><div><SelectActionCard /></div><div><MarkOptimization /></div></div>
         <div style={{display:"flex", justifyContent:"space-around", alignItems:"center", width:"100vw"}}>
         <div style={{marginLeft:"30px"}}> <BasicBars /></div>
@@ -270,13 +340,6 @@ export default function MiniDrawer({showContent=true}) {
     </Box>
   );
 }
-
-
-
-
-
-
-
 
 
 
